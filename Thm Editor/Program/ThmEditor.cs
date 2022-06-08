@@ -57,6 +57,7 @@ namespace ThmEditor
             textBox10.Text = thm.fade_delay.ToString();
             textBox11.Text = thm.material_weight.ToString();
             textBox12.Text = thm.bump_virtual_height.ToString();
+            chbxShocFormat.Checked = thm.soc_repaired;
         }
         public void Values_Update()
         {
@@ -396,6 +397,12 @@ namespace ThmEditor
 
             main_thm.Save(sMainTHM);
             AutoClosingMessageBox.Show("Generated!", "", 500, MessageBoxIcon.Information);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (thm != null)
+                thm.soc_repaired = chbxShocFormat.Checked;
         }
     }
 }

@@ -85,6 +85,7 @@ namespace ThmEditor
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.OpenFileGenerateTHMDialog = new System.Windows.Forms.OpenFileDialog();
+            this.chbxShocFormat = new System.Windows.Forms.CheckBox();
             this.MenuPanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -420,7 +421,7 @@ namespace ThmEditor
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(334, 39);
+            this.button5.Location = new System.Drawing.Point(334, 26);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(79, 103);
             this.button5.TabIndex = 36;
@@ -622,11 +623,24 @@ namespace ThmEditor
             // 
             this.OpenFileGenerateTHMDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.GenerateTHM);
             // 
+            // chbxShocFormat
+            // 
+            this.chbxShocFormat.AutoSize = true;
+            this.chbxShocFormat.Location = new System.Drawing.Point(334, 139);
+            this.chbxShocFormat.Name = "chbxShocFormat";
+            this.chbxShocFormat.Size = new System.Drawing.Size(83, 17);
+            this.chbxShocFormat.TabIndex = 53;
+            this.chbxShocFormat.Text = "Shoc format";
+            this.chbxShocFormat.UseVisualStyleBackColor = true;
+            this.chbxShocFormat.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.chbxShocFormat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            // 
             // ThmEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(425, 361);
+            this.Controls.Add(this.chbxShocFormat);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.comboBox7);
             this.Controls.Add(this.label19);
@@ -741,5 +755,6 @@ namespace ThmEditor
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolStripMenuItem generateTHMForTextureToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog OpenFileGenerateTHMDialog;
+        private System.Windows.Forms.CheckBox chbxShocFormat;
     }
 }

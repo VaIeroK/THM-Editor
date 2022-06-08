@@ -106,7 +106,6 @@ namespace ThmEditor
         // Для тч использование в рендере tp.fmt вместо tp.type, вероятнее всего, является опечаткой, и как следствие,
         // неправильная загрузка THM файла. Вот такие вот приколы от ГСК.
 
-        // ValeroK: Чет не нашел в тч тхмок, а писать новый чанк под этот флаг дикая васянка, отключу пожалуй
         public bool soc_repaired = false;
 
         int THM_CHUNK_VERSION = 0x0810;
@@ -187,6 +186,14 @@ namespace ThmEditor
             ResetValues();
             using (IReader reader = new IReader(new BinaryReader(File.Open(filename, FileMode.Open))))
             {
+                uint chunk_type = reader.find_chunk(THM_CHUNK_TYPE);
+                if (chunk_type != 0)
+                {
+                    reader.r_u32();
+                    if (chunk_type  == 5)
+                        soc_repaired = reader.r_bool();
+                }
+
                 if (reader.find_chunk(THM_CHUNK_TEXTUREPARAM) != 0)
                 {
                     if (soc_repaired)
@@ -257,6 +264,8 @@ namespace ThmEditor
 
                 writer.open_chunk(THM_CHUNK_TYPE);
                 writer.w_u32(1);
+                if (soc_repaired)
+                    writer.w_bool(soc_repaired);
                 writer.close_chunk();
 
                 writer.open_chunk(THM_CHUNK_TEXTUREPARAM);
